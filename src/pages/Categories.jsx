@@ -76,17 +76,33 @@ const Categories = () => {
     <div className="min-h-screen p-4 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Categorías</h1>
-            <p className="text-white/80">Organiza tus tareas por categorías</p>
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12"
+        >
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-4 floating-animation">
+              Categorías
+              <span className="absolute -top-2 -right-2 w-4 h-4 bg-purple-400 rounded-full animate-pulse"></span>
+            </h1>
+            <div className="h-1 w-32 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mb-4 mx-auto lg:mx-0"></div>
+            <p className="text-xl text-white/90 font-light">Organiza y personaliza tus categorías</p>
           </div>
           
-          <Button onClick={() => setIsModalOpen(true)}>
-            <PlusIcon className="w-5 h-5 mr-2" />
-            Nueva Categoría
-          </Button>
-        </div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-2xl px-8 py-4 text-lg"
+            >
+              <PlusIcon className="w-6 h-6 mr-3" />
+              Nueva Categoría
+            </Button>
+          </motion.div>
+        </motion.div>
 
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

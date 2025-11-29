@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { EyeIcon, EyeSlashIcon, UserIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -42,16 +42,26 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-pattern">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
         className="w-full max-w-md"
       >
-        <Card className="p-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold gradient-text">Crear Cuenta</h2>
-            <p className="text-gray-600 mt-2">Únete a TodoApp</p>
+        <Card gradient className="p-10 glow-effect">
+          <div className="text-center mb-10">
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
+              className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl"
+            >
+              <UserIcon className="w-10 h-10 text-white" />
+            </motion.div>
+            <h2 className="text-4xl font-bold gradient-text mb-3">Únete</h2>
+            <p className="text-gray-600 text-lg">Crea tu cuenta en TodoApp</p>
+            <div className="w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mx-auto mt-4"></div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
