@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { EyeIcon, EyeSlashIcon, CheckCircleIcon, ClockIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { EyeIcon, EyeSlashIcon, CheckCircleIcon, ClockIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -42,121 +42,111 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8 relative overflow-hidden">
-      {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{animationDelay: '4s'}}></div>
+      {/* Fondo con elementos decorativos sutiles */}
+      <div className="absolute inset-0 overflow-hidden opacity-30">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
       
-      <div className="relative z-10 w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        {/* Sección izquierda - Información */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 items-center">
+        
+        {/* Sección izquierda - Ejemplos de tareas (más sutil) */}
         <motion.div
-          initial={{ opacity: 0, x: -100 }}
+          initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hidden lg:block text-white"
+          transition={{ duration: 0.6 }}
+          className="hidden lg:block opacity-80"
         >
-          <div className="space-y-8">
-            <div>
-              <h1 className="text-6xl font-bold mb-6 leading-tight">
-                Organiza tu vida con
-                <span className="block bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
-                  TodoApp
-                </span>
-              </h1>
-              <p className="text-xl text-white/80 leading-relaxed">
-                La forma más elegante y eficiente de gestionar tus tareas diarias. 
-                Aumenta tu productividad con nuestro diseño intuitivo.
-              </p>
-            </div>
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-white/90 mb-6">Ejemplos de tareas</h3>
             
-            <div className="grid grid-cols-1 gap-6">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
-              >
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
-                    <CheckCircleIcon className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Gestión Inteligente</h3>
-                    <p className="text-sm text-white/70">Organiza tus tareas por categorías y prioridades</p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
-              >
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-purple-600 rounded-xl flex items-center justify-center">
-                    <ClockIcon className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Seguimiento en Tiempo Real</h3>
-                    <p className="text-sm text-white/70">Visualiza tu progreso con estadísticas detalladas</p>
-                  </div>
-                </div>
-              </motion.div>
+            {/* Ejemplo de tarea 1 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30"
+            >
+              <div className="flex items-center space-x-3 mb-2">
+                <CheckCircleIcon className="w-5 h-5 text-green-400" />
+                <span className="font-medium text-white/90">Completar proyecto web</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-white/70">
+                <CalendarIcon className="w-4 h-4" />
+                <span>Hoy, 15:30</span>
+                <span className="px-2 py-1 bg-blue-500/30 rounded-full text-xs">Trabajo</span>
+              </div>
+            </motion.div>
 
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
-              >
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-green-600 rounded-xl flex items-center justify-center">
-                    <SparklesIcon className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Diseño Elegante</h3>
-                    <p className="text-sm text-white/70">Interfaz moderna y fácil de usar</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            {/* Ejemplo de tarea 2 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30"
+            >
+              <div className="flex items-center space-x-3 mb-2">
+                <ClockIcon className="w-5 h-5 text-orange-400" />
+                <span className="font-medium text-white/90">Hacer ejercicio</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-white/70">
+                <CalendarIcon className="w-4 h-4" />
+                <span>Mañana, 07:00</span>
+                <span className="px-2 py-1 bg-green-500/30 rounded-full text-xs">Personal</span>
+              </div>
+            </motion.div>
+
+            {/* Ejemplo de tarea 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30"
+            >
+              <div className="flex items-center space-x-3 mb-2">
+                <ClockIcon className="w-5 h-5 text-yellow-400" />
+                <span className="font-medium text-white/90">Reunión con equipo</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-white/70">
+                <CalendarIcon className="w-4 h-4" />
+                <span>Viernes, 10:00</span>
+                <span className="px-2 py-1 bg-purple-500/30 rounded-full text-xs">Reuniones</span>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
         
-        {/* Sección derecha - Formulario */}
+        {/* Sección central - Formulario PRINCIPAL */}
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="w-full max-w-md mx-auto lg:mx-0"
+          className="lg:col-span-2 w-full max-w-lg mx-auto"
         >
-          <Card gradient className="p-8 lg:p-10 glow-effect relative overflow-hidden">
-            {/* Decoración del formulario */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-pink-400/20 to-yellow-400/20 rounded-full translate-y-12 -translate-x-12"></div>
+          <Card gradient className="p-10 glow-effect relative overflow-hidden">
+            {/* Decoración sutil */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full -translate-y-12 translate-x-12"></div>
             
             <div className="relative z-10">
-              <div className="text-center mb-8">
+              <div className="text-center mb-10">
                 <motion.div
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.3, type: 'spring', stiffness: 300 }}
-                  className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl transform rotate-12"
+                  transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
+                  className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl"
                 >
-                  <CheckCircleIcon className="w-8 h-8 text-white" />
+                  <CheckCircleIcon className="w-10 h-10 text-white" />
                 </motion.div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">¡Bienvenido de vuelta!</h2>
-                <p className="text-gray-600">Inicia sesión para continuar con tus tareas</p>
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Iniciar Sesión</h1>
+                <p className="text-xl text-gray-600">Accede a tu cuenta de TodoApp</p>
+                <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto mt-6"></div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.3 }}
                 >
                   <Input
                     label="Correo Electrónico"
@@ -165,7 +155,7 @@ const Login = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="tu@email.com"
-                    className="bg-white/70 border-2 border-gray-200 focus:border-blue-500 focus:bg-white transition-all duration-300"
+                    className="bg-white border-2 border-gray-200 focus:border-blue-500 transition-all duration-300 text-lg py-4"
                     required
                   />
                 </motion.div>
@@ -173,7 +163,7 @@ const Login = () => {
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
+                  transition={{ delay: 0.4 }}
                   className="relative"
                 >
                   <Input
@@ -183,18 +173,18 @@ const Login = () => {
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="••••••••"
-                    className="bg-white/70 border-2 border-gray-200 focus:border-blue-500 focus:bg-white transition-all duration-300 pr-12"
+                    className="bg-white border-2 border-gray-200 focus:border-blue-500 transition-all duration-300 text-lg py-4 pr-12"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-9 text-gray-400 hover:text-gray-600 transition-colors"
+                    className="absolute right-4 top-11 text-gray-400 hover:text-gray-600 transition-colors"
                   >
                     {showPassword ? (
-                      <EyeSlashIcon className="w-5 h-5" />
+                      <EyeSlashIcon className="w-6 h-6" />
                     ) : (
-                      <EyeIcon className="w-5 h-5" />
+                      <EyeIcon className="w-6 h-6" />
                     )}
                   </button>
                 </motion.div>
@@ -202,13 +192,12 @@ const Login = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
+                  transition={{ delay: 0.5 }}
                 >
                   <Button
                     type="submit"
                     loading={loading}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                    size="lg"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-5 px-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-lg"
                   >
                     {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
                   </Button>
@@ -218,22 +207,22 @@ const Login = () => {
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="mt-8 text-center"
+                transition={{ delay: 0.6 }}
+                className="mt-10 text-center"
               >
-                <div className="relative">
+                <div className="relative mb-6">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full border-t border-gray-300"></div>
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">¿No tienes cuenta?</span>
+                    <span className="px-4 bg-white text-gray-500 font-medium">¿No tienes cuenta?</span>
                   </div>
                 </div>
                 <Link 
                   to="/register" 
-                  className="mt-4 inline-block text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors"
+                  className="inline-block bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 >
-                  Regístrate aquí y comienza gratis
+                  Crear Cuenta Gratis
                 </Link>
               </motion.div>
             </div>
