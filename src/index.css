@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Global Styles */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #F7F6F3;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
 
 :root {
   /* Paleta Premium Atemporal */
@@ -352,6 +361,29 @@ textarea:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--steel-blue);
   outline-offset: 2px;
+}
+
+/* Layout Components */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.hero {
+  flex: 1.2;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.formPanel {
+  flex: 0.8;
+  min-width: 320px;
+  max-width: 420px;
 }
 
 /* Transiciones Globales */
