@@ -200,39 +200,67 @@ const Dashboard = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <div className="flex gap-2">
-            <Button
-              variant={filter === 'all' ? 'primary' : 'secondary'}
-              onClick={() => setFilter('all')}
-              size="sm"
-            >
-              Todas
-            </Button>
-            <Button
-              variant={filter === 'pending' ? 'primary' : 'secondary'}
-              onClick={() => setFilter('pending')}
-              size="sm"
-            >
-              Pendientes
-            </Button>
-            <Button
-              variant={filter === 'completed' ? 'primary' : 'secondary'}
-              onClick={() => setFilter('completed')}
-              size="sm"
-            >
-              Completadas
-            </Button>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8"
+        >
+          <div className="flex flex-wrap gap-3">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                variant={filter === 'all' ? 'primary' : 'secondary'}
+                onClick={() => setFilter('all')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  filter === 'all' 
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg' 
+                    : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
+                }`}
+              >
+                Todas ({stats.total})
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                variant={filter === 'pending' ? 'primary' : 'secondary'}
+                onClick={() => setFilter('pending')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  filter === 'pending' 
+                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg' 
+                    : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
+                }`}
+              >
+                Pendientes ({stats.pending})
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                variant={filter === 'completed' ? 'primary' : 'secondary'}
+                onClick={() => setFilter('completed')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  filter === 'completed' 
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg' 
+                    : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
+                }`}
+              >
+                Completadas ({stats.completed})
+              </Button>
+            </motion.div>
           </div>
 
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className="w-full sm:w-auto"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <PlusIcon className="w-5 h-5 mr-2" />
-            Nueva Tarea
-          </Button>
-        </div>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="w-full lg:w-auto bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+            >
+              <PlusIcon className="w-6 h-6 mr-3" />
+              Nueva Tarea
+            </Button>
+          </motion.div>
+        </motion.div>
 
         {/* Tasks Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -348,15 +376,45 @@ const Dashboard = () => {
         </div>
 
         {filteredTasks.length === 0 && (
-          <Card className="p-12 text-center">
-            <ClockIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
-              {filter === 'all' ? 'No hay tareas' : `No hay tareas ${filter === 'completed' ? 'completadas' : 'pendientes'}`}
-            </h3>
-            <p className="text-gray-500">
-              {filter === 'all' ? 'Crea tu primera tarea para comenzar' : 'Cambia el filtro para ver otras tareas'}
-            </p>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Card gradient className="p-16 text-center hover-lift">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.4, type: 'spring', stiffness: 300 }}
+                className="w-24 h-24 bg-gradient-to-r from-gray-200 to-gray-300 rounded-full flex items-center justify-center mx-auto mb-8"
+              >
+                <ClockIcon className="w-12 h-12 text-gray-400" />
+              </motion.div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                {filter === 'all' ? '¡Comienza tu viaje de productividad!' : `No hay tareas ${filter === 'completed' ? 'completadas' : 'pendientes'}`}
+              </h3>
+              <p className="text-gray-600 text-lg mb-8 max-w-md mx-auto">
+                {filter === 'all' 
+                  ? 'Crea tu primera tarea y da el primer paso hacia una mejor organización' 
+                  : 'Cambia el filtro para ver otras tareas o crea una nueva'
+                }
+              </p>
+              {filter === 'all' && (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl"
+                  >
+                    <PlusIcon className="w-6 h-6 mr-3" />
+                    Crear Mi Primera Tarea
+                  </Button>
+                </motion.div>
+              )}
+            </Card>
+          </motion.div>
         )}
 
         {/* Modal */}
@@ -366,7 +424,20 @@ const Dashboard = () => {
             setIsModalOpen(false);
             resetForm();
           }}
-          title={editingTask ? 'Editar Tarea' : 'Nueva Tarea'}
+          title={
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                {editingTask ? (
+                  <PencilIcon className="w-5 h-5 text-white" />
+                ) : (
+                  <PlusIcon className="w-5 h-5 text-white" />
+                )}
+              </div>
+              <span className="text-xl font-bold text-gray-900">
+                {editingTask ? 'Editar Tarea' : 'Nueva Tarea'}
+              </span>
+            </div>
+          }
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
