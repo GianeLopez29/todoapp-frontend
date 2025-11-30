@@ -15,6 +15,9 @@ body {
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
 
+.el-selector-del-arco {
+  display: none !important;
+}
 :root {
   /* Paleta Premium Atemporal */
   --ivory: #fefcf8;
@@ -122,6 +125,11 @@ body {
     opacity: 1; 
     transform: translateX(0); 
   }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-fade-up {
