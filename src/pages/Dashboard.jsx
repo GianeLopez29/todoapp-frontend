@@ -64,10 +64,19 @@ const Dashboard = () => {
 
   const handleEdit = (task) => {
     setEditingTask(task);
+    let formattedDate = '';
+    if (task.dueDate) {
+      try {
+        formattedDate = format(new Date(task.dueDate), 'yyyy-MM-dd');
+      } catch (error) {
+        console.error('Error formatting date:', error);
+        formattedDate = '';
+      }
+    }
     setFormData({
       title: task.title,
       description: task.description || '',
-      dueDate: task.dueDate ? format(new Date(task.dueDate), 'yyyy-MM-dd') : '',
+      dueDate: formattedDate,
       category: task.category?._id || ''
     });
     setIsModalOpen(true);

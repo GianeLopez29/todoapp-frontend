@@ -58,7 +58,11 @@ export const useTasks = () => {
   const toggleTask = async (id) => {
     const task = tasks.find(t => t._id === id);
     if (task) {
-      await updateTask(id, { ...task, completed: !task.completed });
+      try {
+        await updateTask(id, { ...task, completed: !task.completed });
+      } catch (error) {
+        console.error('Error toggling task:', error);
+      }
     }
   };
 
