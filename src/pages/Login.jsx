@@ -12,45 +12,47 @@ function Login() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-12"
         >
-          <div className="space-y-6">
-            <div className="w-16 h-16 bg-graphite rounded-2xl flex items-center justify-center">
-              <div className="w-8 h-8 bg-ivory rounded-lg"></div>
+          <div className="space-y-8">
+            <div className="w-12 h-12 bg-gradient-to-br from-steel-blue to-petrol-green rounded-xl flex items-center justify-center shadow-md">
+              <svg className="w-6 h-6 text-ivory" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
             </div>
             <div>
-              <h1 className="text-display text-graphite mb-4">TodoApp</h1>
-              <p className="text-subtitle text-gray-600 max-w-md">
-                Gestión de tareas elegante y minimalista para profesionales modernos
+              <h1 style={{fontSize: 'clamp(22px, 3.2vw, 36px)', fontWeight: '600', color: 'var(--graphite)', marginBottom: '12px', letterSpacing: '-0.02em'}}>TodoApp</h1>
+              <p style={{fontSize: 'clamp(14px, 1.6vw, 16px)', color: 'var(--gray-600)', maxWidth: '320px', lineHeight: '1.5'}}>
+                Gestión minimalista de tareas
               </p>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="w-2 h-2 bg-steel-blue rounded-full"></div>
+          <div className="space-y-6">
+            <div className="flex items-start space-x-3">
+              <div className="w-1.5 h-1.5 bg-steel-blue rounded-full mt-2 flex-shrink-0"></div>
               <div>
-                <h3 className="text-title text-graphite mb-2">Diseño Intuitivo</h3>
-                <p className="text-body text-gray-600 max-w-sm">
-                  Interfaz limpia y elegante que se adapta a tu flujo de trabajo
+                <h3 style={{fontSize: '16px', fontWeight: '500', color: 'var(--graphite)', marginBottom: '4px'}}>Diseño Intuitivo</h3>
+                <p style={{fontSize: '14px', color: 'var(--gray-600)', maxWidth: '280px', lineHeight: '1.4'}}>
+                  Interfaz limpia y elegante
                 </p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="w-2 h-2 bg-petrol-green rounded-full"></div>
+            <div className="flex items-start space-x-3">
+              <div className="w-1.5 h-1.5 bg-petrol-green rounded-full mt-2 flex-shrink-0"></div>
               <div>
-                <h3 className="text-title text-graphite mb-2">Sincronización Total</h3>
-                <p className="text-body text-gray-600 max-w-sm">
-                  Accede a tus tareas desde cualquier dispositivo, siempre actualizado
+                <h3 style={{fontSize: '16px', fontWeight: '500', color: 'var(--graphite)', marginBottom: '4px'}}>Sincronización Total</h3>
+                <p style={{fontSize: '14px', color: 'var(--gray-600)', maxWidth: '280px', lineHeight: '1.4'}}>
+                  Acceso desde cualquier dispositivo
                 </p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="w-2 h-2 bg-gold-soft rounded-full"></div>
+            <div className="flex items-start space-x-3">
+              <div className="w-1.5 h-1.5 bg-gold-soft rounded-full mt-2 flex-shrink-0"></div>
               <div>
-                <h3 className="text-title text-graphite mb-2">Productividad Avanzada</h3>
-                <p className="text-body text-gray-600 max-w-sm">
-                  Herramientas inteligentes para optimizar tu tiempo y energía
+                <h3 style={{fontSize: '16px', fontWeight: '500', color: 'var(--graphite)', marginBottom: '4px'}}>Productividad Avanzada</h3>
+                <p style={{fontSize: '14px', color: 'var(--gray-600)', maxWidth: '280px', lineHeight: '1.4'}}>
+                  Herramientas para optimizar tu tiempo
                 </p>
               </div>
             </div>
